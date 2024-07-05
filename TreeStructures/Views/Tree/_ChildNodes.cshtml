@@ -1,0 +1,17 @@
+﻿@model TreeStructures.Models.TreeStructureModel
+
+<div class="container">
+    <li>
+        @Model.Name
+    </li>
+    @if (Model.ChildNodes.Count > 0)
+    {
+        <ul>
+            @foreach (var childNode in Model.ChildNodes)
+            {
+                <partial name="_ChildNodes" model="childNode" />
+            }
+        </ul>
+    }
+
+</div>

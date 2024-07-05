@@ -1,0 +1,29 @@
+﻿@model TreeStructures.Models.NodeInfoModel
+@{
+    ViewBag.Title = "Edit node";
+}
+
+<h2>Edit node</h2>
+
+<form asp-controller="Tree" asp-action="EditNode" method="post">
+    <div asp-validation-summary="All"></div>
+    <input type="hidden" id="@Model.Id" asp-for="@Model.Id"/>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Name">Node Name</label>
+            <input type="text" class="form-control mb-3" asp-for="Name" required />
+            <span asp-validation-for="Name" class="alert-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="ParentNodeId">Parent Node</label>
+            <select asp-for="ParentNodeId" name="ParentNodeId" class="form-control mb-3" asp-items="@(new SelectList(Model.ParentNodes, "Value", "Text"))"></select>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="IsActive">IsActive</label>
+            <input id="IsActive" type="checkbox" asp-for="IsActive" class="form-check-input" />
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-lg btn-primary p-2 btn-sm"><i class="bi bi-file-plus-fill"></i>Save</button>
+    <a asp-controller="Tree" asp-action="AllNodes" class="btn btn-lg btn-warning p-2 btn-sm">Back To List</a>
+</form>

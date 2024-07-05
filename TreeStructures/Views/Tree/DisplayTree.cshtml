@@ -1,0 +1,17 @@
+﻿@model IEnumerable<TreeStructures.Models.TreeStructureModel>
+
+
+<h5>Tree Node Structure</h5>
+
+<a asp-controller="Tree" asp-action="AllNodes" class="btn btn-primary">Back To List</a>
+
+<div class="container">
+
+    <ul>
+        @foreach (var node in Model)
+        {
+           <partial name="_ChildNodes" model="node"/>
+        }
+    </ul>
+
+</div>
